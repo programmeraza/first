@@ -1,0 +1,23 @@
+.footer {
+    background-color: #0B1919;
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            background-color: #1D2F30;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            width: 100%;
+            padding: 5px 0;
+        }
+    }
+
+    &__img {
+        background-color: #0B1919;
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+}

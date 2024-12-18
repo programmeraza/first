@@ -1,66 +1,70 @@
-import React, { useState } from 'react';
-import './Card.scss';
+import React, { useState } from "react";
+import "./Card.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
 const cards = [
   {
-    image: './img1.png',
-    title: 'Fig. 1 (plant)',
-    text: 'Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.',
+    image: "./img1.png",
+    title: "Fig. 1 (plant)",
+    text: "Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.",
   },
   {
-    image: './img2.png',
-    title: 'Fig. 2 (flower)',
-    text: 'Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.',
+    image: "./img2.png",
+    title: "Fig. 2 (flower)",
+    text: "Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.",
   },
   {
-    image: './img3.png',
-    title: 'Fig. 3 (leaf)',
-    text: 'Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.',
+    image: "./img3.png",
+    title: "Fig. 3 (leaf)",
+    text: "Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.",
   },
   {
-    image: './img4.png',
-    title: 'Fig. 4 (wood)',
-    text: 'Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.',
+    image: "./img4.png",
+    title: "Fig. 4 (wood)",
+    text: "Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.",
   },
   {
-    image: './img4.png',
-    title: 'Fig. 4 (wood)',
-    text: 'Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.',
+    image: "./img4.png",
+    title: "Fig. 4 (wood)",
+    text: "Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.",
   },
   {
-    image: './img1.png',
-    title: 'Fig. 1 (plant)',
-    text: 'Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.',
+    image: "./img1.png",
+    title: "Fig. 1 (plant)",
+    text: "Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.",
   },
   {
-    image: './img2.png',
-    title: 'Fig. 2 (flower)',
-    text: 'Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.',
+    image: "./img2.png",
+    title: "Fig. 2 (flower)",
+    text: "Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.",
   },
   {
-    image: './img3.png',
-    title: 'Fig. 3 (leaf)',
-    text: 'Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.',
+    image: "./img3.png",
+    title: "Fig. 3 (leaf)",
+    text: "Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.",
   },
   {
-    image: './img1.png',
-    title: 'Fig. 1 (plant)',
-    text: 'Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.',
+    image: "./img1.png",
+    title: "Fig. 1 (plant)",
+    text: "Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира своевременно верифицированы.",
   },
   {
-    image: './img4.png',
-    title: 'Fig. 4 (wood)',
-    text: 'Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.',
+    image: "./img4.png",
+    title: "Fig. 4 (wood)",
+    text: "Базовый вектор развития не даёт нам иного выбора, кроме определения новых предложений.",
   },
   {
-    image: './img2.png',
-    title: 'Fig. 2 (flower)',
-    text: 'Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.',
+    image: "./img2.png",
+    title: "Fig. 2 (flower)",
+    text: "Прежде всего, синтетическое тестирование влечет за собой процесс внедрения и модернизации условий.",
   },
   {
-    image: './img3.png',
-    title: 'Fig. 3 (leaf)',
-    text: 'Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.',
+    image: "./img3.png",
+    title: "Fig. 3 (leaf)",
+    text: "Лишь непосредственные участники прогресса неоднозначны и будут в равной степени предоставлены сами себе для работы.",
   },
 ];
 
@@ -93,11 +97,15 @@ const Card = () => {
           <div className="card__boxs">
             {currentCards.map((card, index) => (
               <div className="card__box" key={index}>
-                <img src={card.image} alt={card.title} className="card__image" />
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="card__image"
+                />
                 <div className="card__content">
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
-                <button className="card__btn">Подробнее</button>
+                  <button className="card__btn">Подробнее</button>
                 </div>
               </div>
             ))}
@@ -121,6 +129,31 @@ const Card = () => {
               <img src="/arrow-right.svg" alt="" />
             </button>
           </div>
+        </div>
+        <div className="card__swiper">
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            onSlideChange={() => console.log("Slide changed")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {currentCards.map((card, index) => (
+              <SwiperSlide className="card__swiper-box" key={index}>
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="card__image"
+                />
+                <div className="card__content">
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                  <button className="card__btn">Подробнее</button>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
